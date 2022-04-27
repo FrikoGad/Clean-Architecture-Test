@@ -23,8 +23,10 @@ class SharedPrefUserStorage(context: Context) : UserStorage {
     }
 
     override fun get(): User {
-        val firstName = sharedPreferences.getString(KEY_FIRST_NAME, DEFAULT_FIRST_NAME) ?: DEFAULT_FIRST_NAME
-        val lastName = sharedPreferences.getString(KEY_LAST_NAME, DEFAULT_LAST_NAME) ?: DEFAULT_LAST_NAME
+        val firstName =
+            sharedPreferences.getString(KEY_FIRST_NAME, DEFAULT_FIRST_NAME) ?: DEFAULT_FIRST_NAME
+        val lastName =
+            sharedPreferences.getString(KEY_LAST_NAME, DEFAULT_LAST_NAME) ?: DEFAULT_LAST_NAME
         return User(firstName = firstName, lastName = lastName)
     }
 }
