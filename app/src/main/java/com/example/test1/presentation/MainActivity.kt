@@ -6,16 +6,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.example.test1.R
-import com.example.test1.data.UserRepositoryImpl
+import com.example.test1.data.repository.UserRepositoryImpl
+import com.example.test1.data.storage.sharedprefs.SharedPrefUserStorage
 import com.example.test1.domain.models.SaveUserNameParam
 import com.example.test1.domain.models.UserName
-import com.example.test1.domain.repository.UserRepository
 import com.example.test1.domain.usecase.GetUserNameUseCase
 import com.example.test1.domain.usecase.SaveUserNameUseCase
 
 class MainActivity : AppCompatActivity() {
     private val userRepository by lazy(LazyThreadSafetyMode.NONE) {
-        UserRepositoryImpl(context = applicationContext)
+        UserRepositoryImpl(userStorage = SharedPrefUserStorage(context = applicationContext))
     }
     private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {
         GetUserNameUseCase(userRepository = userRepository)
