@@ -1,5 +1,5 @@
 # Clean-Architecture-Test
-Применение Clean Architecture в андроид приложении.
+Использование архитектуры Clean Architecture и паттерна MVVM в андроид приложении.
 # #Clean Architecture
 # #MVVM
 
