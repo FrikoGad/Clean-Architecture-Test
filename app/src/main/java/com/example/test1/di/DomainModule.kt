@@ -1,16 +1,21 @@
 package com.example.test1.di
 
+import com.example.test1.domain.repository.UserRepository
 import com.example.test1.domain.usecase.GetUserNameUseCase
 import com.example.test1.domain.usecase.SaveUserNameUseCase
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
 
-val domainModule = module {
+@Module
+class DomainModule {
 
-    factory<GetUserNameUseCase> {
-        GetUserNameUseCase(userRepository = get())
+    @Provides
+    fun provideGetUserNameUseCase(userRepository: UserRepository): GetUserNameUseCase {
+        return GetUserNameUseCase(userRepository = userRepository)
     }
 
-    factory<SaveUserNameUseCase> {
-        SaveUserNameUseCase(userRepository = get())
+    @Provides
+    fun provideSaveUserNameUseCase(userRepository: UserRepository): SaveUserNameUseCase {
+        return SaveUserNameUseCase(userRepository = userRepository)
     }
 }

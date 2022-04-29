@@ -1,19 +1,23 @@
 package com.example.test1.di
 
+import android.content.Context
 import com.example.test1.data.repository.UserRepositoryImpl
 import com.example.test1.data.storage.UserStorage
 import com.example.test1.data.storage.sharedprefs.SharedPrefUserStorage
 import com.example.test1.domain.repository.UserRepository
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
 
-val dataModule = module {
+@Module
+class DataModule {
 
-    single<UserStorage> {
-        SharedPrefUserStorage(context = get())
+    @Provides
+    fun provideUserStorage(context: Context): UserStorage {
+        return SharedPrefUserStorage(context = context)
     }
 
-    single<UserRepository> {
-        UserRepositoryImpl(userStorage = get())
+    @Provides
+    fun provideUserRepository(userStorage: UserStorage): UserRepository {
+        return UserRepositoryImpl(userStorage = userStorage)
     }
-
 }
