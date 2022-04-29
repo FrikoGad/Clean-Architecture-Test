@@ -1,5 +1,6 @@
 package com.example.test1.presentation
 
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,8 +8,11 @@ import com.example.test1.domain.models.SaveUserNameParam
 import com.example.test1.domain.models.UserName
 import com.example.test1.domain.usecase.GetUserNameUseCase
 import com.example.test1.domain.usecase.SaveUserNameUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val getUserNameUseCase: GetUserNameUseCase,
     private val saveUserNameUseCase: SaveUserNameUseCase
 ) : ViewModel() {
